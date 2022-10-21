@@ -6,7 +6,8 @@ Currently this is just a little bit of code to download the list of packages fro
 website and parse them to Python objects.
 
 Eventually I'd like to integrate this into a Home Assistant component. It could be fun to see if packages
-are expected on the current day or following days, and maybe merge data from multiple data, create automations with this information, etc.
+are expected on the current day or following days, and maybe merge data from multiple people, 
+create automations with this information, etc.
 
 ## Available Data
 
