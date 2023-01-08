@@ -17,6 +17,9 @@ import json
 import pprint as pp
 import time
 
+# TODO: Use config file
+from credentials import EMAIL, PASSWORD
+
 
 class PackageStatus(Enum):
     IN_TRANSIT = auto()
@@ -35,9 +38,6 @@ class Package:
 
     def __repr__(self):
         return str(self.__dict__)
-
-# TODO: Use config file
-from credentials import EMAIL, PASSWORD
 
 class Scraper:
     def __init__(self, headless=True, email=EMAIL, password=PASSWORD):
@@ -118,8 +118,11 @@ class Scraper:
 
 
     def to_package(self, data):
-        package = Package(data['id'], data['summary'], self.to_status(data['statusType']), 
-                          datetime.fromisoformat(data['date']), data['actions'][0]['url'])
+        package = Package(data['id'], 
+                          data['summary'], 
+                          self.to_status(data['statusType']), 
+                          datetime.fromisoformat(data['date']) if 'date' in data else None, 
+                          data['actions'][0]['url'])
         return package
 
 
